@@ -11,6 +11,7 @@ namespace iMon.DisplayApi
 
         private iMonWrapperApi wrapper;
 
+        // Current state of the LCD icons
         private Dictionary<iMonLcdIcons, bool> icons;
 
         #endregion
@@ -220,6 +221,7 @@ namespace iMon.DisplayApi
             return false;
         }
 
+        // TODO: Optimalize setting of more icons at the same time
         public bool Set(IEnumerable<iMonLcdIcons> iconList, bool show)
         {
             bool result = true;
@@ -261,6 +263,7 @@ namespace iMon.DisplayApi
 
         #region Private functions
 
+        // TODO: Optimalize setting of more icons at the same time
         private iMonNativeApi.iMonDisplayResult set(iMonLcdIcons icon, bool show)
         {
             byte[] data = new byte[2];
@@ -345,7 +348,7 @@ namespace iMon.DisplayApi
                     if (this.icons[iMonLcdIcons.DiscTopRight])
                         data[0] |= iconMasks[iMonLcdIcons.DiscTopRight];
                     if (this.icons[iMonLcdIcons.DiscCircle])
-                        data[0] |= iconMasks[iMonLcdIcons.DiscCircle];
+                        data[1] |= iconMasks[iMonLcdIcons.DiscCircle];
 
                     int index = 0;
                     if (icon == iMonLcdIcons.DiscCircle)
@@ -362,7 +365,7 @@ namespace iMon.DisplayApi
                         data[index] &= (byte)~iconMasks[icon];
                     }
 
-                    this.wrapper.OnLog("IMON_Display_SetLcdOrangeIcon(" + Convert.ToString(data[0], 2) + ", " + Convert.ToString(data[0], 2) + ")");
+                    this.wrapper.OnLog("IMON_Display_SetLcdOrangeIcon(" + Convert.ToString(data[0], 2) + ", " + Convert.ToString(data[1], 2) + ")");
                     return iMonNativeApi.IMON_Display_SetLcdOrangeIcon(data[0], data[1]);
                 }
                 #endregion

@@ -22,7 +22,6 @@ namespace iMon.DisplayApi
         #region Constructors
 
         public iMonErrorEventArgs(iMonErrorType errorType) 
-            : base()
         {
             this.type = errorType;
         }

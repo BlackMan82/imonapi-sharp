@@ -10,11 +10,11 @@ namespace iMon.DisplayApi
         {
             None = 0,
             /// <summary>
-            /// VFD products
+            /// VFD product
             /// </summary>
             VFD = 0x01,
             /// <summary>
-            /// LCD products
+            /// LCD product
             /// </summary>
             LCD = 0x02,
         }

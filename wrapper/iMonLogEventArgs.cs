@@ -22,7 +22,6 @@ namespace iMon.DisplayApi
         #region Constructors
 
         public iMonLogEventArgs(string message) 
-            : base()
         {
             this.message = message;
         }

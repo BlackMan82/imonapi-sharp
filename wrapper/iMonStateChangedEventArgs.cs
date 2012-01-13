@@ -22,7 +22,6 @@ namespace iMon.DisplayApi
         #region Constructors
 
         public iMonStateChangedEventArgs(bool initialized) 
-            : base()
         {
             this.initialized = initialized;
         }
