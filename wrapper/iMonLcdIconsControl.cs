@@ -14,6 +14,8 @@ namespace iMon.DisplayApi
         // Current state of the LCD icons
         private Dictionary<iMonLcdIcons, bool> icons;
 
+        private const bool LogDisplayingDiscIcons = false;
+
         #endregion
 
         #region Public variables
@@ -151,7 +153,8 @@ namespace iMon.DisplayApi
                 throw new InvalidOperationException("The display is not initialized");
             }
 
-            this.wrapper.OnLog("IMON_Display_SetLcdAllIcons(" + show + ")");
+            if (LogDisplayingDiscIcons)
+                this.wrapper.OnLog("IMON_Display_SetLcdAllIcons(" + show + ")");
             iMonNativeApi.iMonDisplayResult result = iMonNativeApi.IMON_Display_SetLcdAllIcons(show);
             
             switch (result)
@@ -315,7 +318,8 @@ namespace iMon.DisplayApi
                         data[index] &= (byte)~iconMasks[icon];
                     }
 
-                    this.wrapper.OnLog("IMON_Display_SetLcdSpeakerIcon(" + Convert.ToString(data[0], 2) + ", " + Convert.ToString(data[0], 2) + ")");
+                    if (LogDisplayingDiscIcons)
+                        this.wrapper.OnLog("IMON_Display_SetLcdSpeakerIcon(" + Convert.ToString(data[0], 2) + ", " + Convert.ToString(data[0], 2) + ")");
                     return iMonNativeApi.IMON_Display_SetLcdSpeakerIcon(data[0], data[1]);
                 }
                 #endregion
@@ -365,7 +369,8 @@ namespace iMon.DisplayApi
                         data[index] &= (byte)~iconMasks[icon];
                     }
 
-                    this.wrapper.OnLog("IMON_Display_SetLcdOrangeIcon(" + Convert.ToString(data[0], 2) + ", " + Convert.ToString(data[1], 2) + ")");
+                    if (LogDisplayingDiscIcons)
+                        this.wrapper.OnLog("IMON_Display_SetLcdOrangeIcon(" + Convert.ToString(data[0], 2) + ", " + Convert.ToString(data[1], 2) + ")");
                     return iMonNativeApi.IMON_Display_SetLcdOrangeIcon(data[0], data[1]);
                 }
                 #endregion
@@ -403,7 +408,8 @@ namespace iMon.DisplayApi
                         data[0] &= (byte)~iconMasks[icon];
                     }
 
-                    this.wrapper.OnLog("IMON_Display_SetLcdMediaTypeIcon(" + Convert.ToString(data[0], 2) + ")");
+                    if (LogDisplayingDiscIcons)
+                        this.wrapper.OnLog("IMON_Display_SetLcdMediaTypeIcon(" + Convert.ToString(data[0], 2) + ")");
                     return iMonNativeApi.IMON_Display_SetLcdMediaTypeIcon(data[0]);
                 }
                 #endregion
@@ -444,7 +450,8 @@ namespace iMon.DisplayApi
                         data[0] &= (byte)~iconMasks[icon];
                     }
 
-                    this.wrapper.OnLog("IMON_Display_SetLcdVideoCodecIcon(" + Convert.ToString(data[0], 2) + ")");
+                    if (LogDisplayingDiscIcons)
+                        this.wrapper.OnLog("IMON_Display_SetLcdVideoCodecIcon(" + Convert.ToString(data[0], 2) + ")");
                     return iMonNativeApi.IMON_Display_SetLcdVideoCodecIcon(data[0]);
                 }
                 #endregion
@@ -473,7 +480,8 @@ namespace iMon.DisplayApi
                         data[0] &= (byte)~iconMasks[icon];
                     }
 
-                    this.wrapper.OnLog("IMON_Display_SetLcdAudioCodecIcon(" + Convert.ToString(data[0], 2) + ")");
+                    if (LogDisplayingDiscIcons)
+                        this.wrapper.OnLog("IMON_Display_SetLcdAudioCodecIcon(" + Convert.ToString(data[0], 2) + ")");
                     return iMonNativeApi.IMON_Display_SetLcdAudioCodecIcon(data[0]);
                 }
                 #endregion
@@ -508,7 +516,8 @@ namespace iMon.DisplayApi
                         data[0] &= (byte)~iconMasks[icon];
                     }
 
-                    this.wrapper.OnLog("IMON_Display_SetLcdAspectRatioIcon(" + Convert.ToString(data[0], 2) + ")");
+                    if (LogDisplayingDiscIcons)
+                        this.wrapper.OnLog("IMON_Display_SetLcdAspectRatioIcon(" + Convert.ToString(data[0], 2) + ")");
                     return iMonNativeApi.IMON_Display_SetLcdAspectRatioIcon(data[0]);
                 }
                 #endregion
@@ -543,7 +552,8 @@ namespace iMon.DisplayApi
                         data[0] &= (byte)~iconMasks[icon];
                     }
 
-                    this.wrapper.OnLog("IMON_Display_SetLcdEtcIcon(" + Convert.ToString(data[0], 2) + ")");
+                    if (LogDisplayingDiscIcons)
+                        this.wrapper.OnLog("IMON_Display_SetLcdEtcIcon(" + Convert.ToString(data[0], 2) + ")");
                     return iMonNativeApi.IMON_Display_SetLcdEtcIcon(data[0]);
                 }
                 #endregion
